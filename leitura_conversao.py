@@ -157,7 +157,8 @@ def encontrar_contornos(imagem_binaria):
     Returns:
         list: Lista de contornos.
     """
-    contornos, _ = cv2.findContours(imagem_binaria, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contornos, _ = cv2.findContours(imagem_binaria, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    #contornos, _ = cv2.findContours(imagem_binaria, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     return contornos
 
 def desenhar_contornos(imagem, contornos):
@@ -192,10 +193,10 @@ def desenhar_caixas_limite(imagem, contornos):
         cv2.rectangle(imagem_copiada, (x, y), (x + l, y + a), (0, 255, 0), 2)
     return imagem_copiada
 
-# ==================== BÔNUS FILTRO ====================
-def filtrar_contornos(contornos, area_minima=500):
+# Função de filtro para área mínima de contornos
+def filtrar_contornos(contornos, area_minima=100):
     """
-    BÔNUS: Filtra contornos por área mínima (remove ruído).
+    Filtra contornos por área mínima (remove ruído).
     
     Args:
         contornos (list): Lista de contornos.
