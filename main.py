@@ -90,3 +90,41 @@ if __name__ == "__main__":
     img_caixas_bonus = desenhar_caixas_limite(img, contornos_filtrados)
     exibir_imagem(img_caixas_bonus, "Bounding Boxes Filtrados")
     
+"""
+PARTE CONCEITUAL - RESPOSTAS:
+
+1 - Por que a conversão para escala de cinza é importante?
+    A conversão para cinza é importante porque simplifica a representação da imagem. Inicialmente, a imagem lida é colorida e é retornada como um np.array de 3 dimensões (altura, largura, canais). Ao transformarmos uma imagem colorida para uma escala de cinza, estamos reduzindo a dimensionalidade desta, pois antes a imagem que possuía três canais de cor (BGR) passa a ter apenas um, representado por um único valor de cinza. Assim, a imagem que antes possuía três dimensões (altura, largura e canais) passa a ter apenas duas dimensões (altura e largura), já que não há mais separação entre canais de cor. Essa transformação economiza memória, acelera o processamento e facilita a aplicação de técnicas como detecção de bordas, segmentação e thresholding.
+
+2 - O que o histograma revela sobre a imagem
+    O histograma revela distribuição dos níveis de intensidade dos picels (intensidade x frequência)
+    No eixo X é representada a intensidade dos pixels que variam entre 0 a 255 e no eixo Y é indicada a quantidade de pixels que possuem aquele valor. Utilizar o histograma é útil para identificar diversos comportamentos da imagem:
+
+    - Se a imagem está muito escura, a maioria dos pixels estará
+    concentrada em valores baixos.
+
+    - Se a imagem está muito clara, os pixels estarão concentrados
+    em valores altos.
+
+    - Se a imagem tem bom contraste, os valores estarão bem
+    distribuídos ao longo do intervalo.
+
+    - Se a imagem tem baixo contraste, os valores estarão
+    concentrados em uma faixa pequena.
+
+    Assim, é possível entender melhor que ajustem precisam ser feitos
+
+3 -Por que aplicar morfologia antes de detectar contornos?
+    Aplicar a morfologia antes do passo de detecção de contornos é importante para melhorar a qualidade da imagem. Após a binarização da imagem (threshold), normalmente aparecem pequenos ruídos e imperfeições na segmentação.
+
+    No código utilizamos MORPH_CLOSE, uma função do OpenCV que realiza duas etapas. Primeiro ela dilata a imagem (expande o branco) e depois a erode (encolhe o branco).
+
+    O resultado é o fechamento de buracos dentro dos objetos e a conexão de partes que deveriam estar juntas. Dessa forma, a imagem e os objetos ficam mais consistentes, reduzindo ruídos e facilitando a detecção correta dos contornos.
+
+4. Em qual cenário real esse sistema poderia ser aplicado?
+    Esse tipo de pipeline pode ser aplicado em diversos cenários nos quais o objetivo é detectar objetos automaticamente em imagens. Por exemplo, na inspeção industrial, sistemas de visão computacional podem ser utilizados em linhas de produção para detectar peças, contar objetos ou identificar defeitos em produtos. Dessa forma, uma câmera pode analisar as imagens capturadas e verificar se os componentes estão presentes ou se há falhas nas embalagens.
+
+    Na agricultura, esse tipo de sistema também pode ser utilizado para identificar frutas, contar plantas ou detectar pragas em imagens capturadas por drones ou câmeras no campo, auxiliando no monitoramento das plantações.
+
+    Além disso, pode ser aplicado em segurança e monitoramento, permitindo detectar pessoas ou objetos em imagens de câmeras de vigilância e auxiliando na análise automática das imagens capturadas.
+"""
