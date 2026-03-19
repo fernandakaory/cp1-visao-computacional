@@ -19,7 +19,7 @@ from leitura_conversao import (
 if __name__ == "__main__":
     
     # 1. Carregar imagem 
-    img = carregar_imagem("puppy.png") 
+    img = carregar_imagem("./imagens/puppy.png") 
     print("Dimensões imagem colorida:", img.shape)
 
     # 2. Converter para cinza
