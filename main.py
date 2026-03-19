@@ -26,7 +26,7 @@ if __name__ == "__main__":
     cinza = converter_cinza(img)
     print("Dimensões imagem cinza:", cinza.shape)
     exibir_imagem(cinza, "Imagem Original (Cinza)")
-    plotar_histograma(cinza)
+    plotar_histograma(cinza, "Imagem Original (Cinza)")
 
     brilho, contraste = calcular_metricas(cinza)
     print("\n--- MÉTRICAS ORIGINAIS ---")
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     # 3. Ajustar brilho e contraste
     img_ajustada = ajustar_brilho_contraste(cinza, alpha=1.3, beta=30)
     exibir_imagem(img_ajustada, "Brilho e Contraste Ajustados")
-    plotar_histograma(img_ajustada)
+    plotar_histograma(img_ajustada, "Brilho e Contraste Ajustados")
 
     brilho_ajustado, contraste_ajustado = calcular_metricas(img_ajustada)
     print("\n--- MÉTRICAS APÓS AJUSTES ---")
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     # 4. Equalizar histograma
     img_equalizada = equalizar_imagem(img_ajustada)
     exibir_imagem(img_equalizada, "Imagem Equalizada")
-    plotar_histograma(img_equalizada)
+    plotar_histograma(img_equalizada, "Imagem Equalizada")
 
     brilho_eq, contraste_eq = calcular_metricas(img_equalizada)
     print("\n--- MÉTRICAS APÓS EQUALIZAÇÃO ---")
