@@ -138,7 +138,7 @@ def aplicar_morfologia(imagem_binaria):
     Aplica operação morfológica de fechamento.
     
     Args:
-        imagem_binary (np.ndarray): Imagem binária.
+        imagem_binaria (np.ndarray): Imagem binária.
     
     Returns:
         np.ndarray: Imagem limpa.
@@ -152,7 +152,7 @@ def encontrar_contornos(imagem_binaria):
     Detecta contornos externos.
     
     Args:
-        imagem_binary (np.ndarray): Imagem binária.
+        imagem_binaria (np.ndarray): Imagem binária.
     
     Returns:
         list: Lista de contornos.
